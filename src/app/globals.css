@@ -1,26 +1,237 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════
+   ELFENORAKEL LANDING - Design System
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Dark Mode (Default) - Cosmic Mystical */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Backgrounds */
+  --bg-primary: #0A0A0C;
+  --bg-secondary: #121218;
+  --bg-card: #1A1A24;
+  --bg-card-hover: #222230;
+
+  /* Gold Palette */
+  --gold-dim: #8B7355;
+  --gold: #C9A35C;
+  --gold-light: #F4E3B1;
+  --gold-glow: #FFD700;
+
+  /* Teal Accent */
+  --teal-dim: #1A4D4D;
+  --teal: #2DD4BF;
+  --teal-light: #5EEAD4;
+
+  /* Text */
+  --text-primary: #F5F5F5;
+  --text-secondary: #C0C0C0;
+  --text-muted: #808080;
+
+  /* Glass */
+  --glass-bg: rgba(26, 26, 36, 0.7);
+  --glass-border: rgba(201, 163, 92, 0.2);
+
+  /* Shadows */
+  --shadow-gold: 0 0 30px rgba(201, 163, 92, 0.3);
+  --shadow-teal: 0 0 30px rgba(45, 212, 191, 0.3);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
 }
 
+/* Light Mode - Ethereal Warmth */
+[data-theme="light"] {
+  /* Backgrounds */
+  --bg-primary: #FFFBF5;
+  --bg-secondary: #FFF8EE;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FFF5E6;
+
+  /* Gold Palette (adjusted for light) */
+  --gold-dim: #B8956C;
+  --gold: #996B1F;
+  --gold-light: #C9A35C;
+  --gold-glow: #DAA520;
+
+  /* Teal Accent (adjusted for light) */
+  --teal-dim: #99E6DC;
+  --teal: #0D9488;
+  --teal-light: #14B8A6;
+
+  /* Text */
+  --text-primary: #1A1A1A;
+  --text-secondary: #4A4A4A;
+  --text-muted: #6B6B6B;
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(153, 107, 31, 0.2);
+
+  /* Shadows */
+  --shadow-gold: 0 0 30px rgba(153, 107, 31, 0.2);
+  --shadow-teal: 0 0 30px rgba(13, 148, 136, 0.2);
+}
+
+/* Tailwind Theme Integration */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dim: var(--gold-dim);
+  --color-teal: var(--teal);
+  --color-teal-light: var(--teal-light);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ═══════════════════════════════════════════════════════════════
+   BASE STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   UTILITY CLASSES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Glassmorphism */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+}
+
+/* Gold Glow */
+.glow-gold {
+  box-shadow: var(--shadow-gold);
+}
+
+.glow-gold-hover:hover {
+  box-shadow: var(--shadow-gold);
+}
+
+/* Teal Glow */
+.glow-teal {
+  box-shadow: var(--shadow-teal);
+}
+
+/* Text Gradient */
+.text-gradient-gold {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dim));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Cosmic Background */
+.bg-cosmic {
+  background:
+    radial-gradient(ellipse at top, rgba(45, 212, 191, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(201, 163, 92, 0.1) 0%, transparent 50%),
+    var(--bg-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 163, 92, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse glow */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(201, 163, 92, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(201, 163, 92, 0.5); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLLBAR
+   ═══════════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gold-dim);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SELECTION
+   ═══════════════════════════════════════════════════════════════ */
+
+::selection {
+  background: var(--gold);
+  color: var(--bg-primary);
 }
