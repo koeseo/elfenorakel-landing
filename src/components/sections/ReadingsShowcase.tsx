@@ -36,7 +36,7 @@ const platforms = [
     url: "https://youtube.com/@elfenorakel",
     description: "Ausführliche Readings, Wochenvorschauen & spirituelle Impulse",
     color: "#FF0000",
-    followers: "10K+",
+    followers: "84",
   },
   {
     name: "TikTok",
@@ -45,7 +45,7 @@ const platforms = [
     url: "https://tiktok.com/@elfenorakel",
     description: "Kurze Botschaften, tägliche Impulse & Pick-a-Card Readings",
     color: "#000000",
-    followers: "50K+",
+    followers: "312",
   },
 ];
 

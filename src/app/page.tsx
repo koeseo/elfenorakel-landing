@@ -1,4 +1,4 @@
-import { Hero, ShortsShowcase, ReadingsShowcase, AppShowcase } from "@/components/sections";
+import { Hero, ShortsShowcase, ReadingsShowcase, AppShowcase, TikTokShowcase } from "@/components/sections";
 import { CosmicBackground } from "@/components/backgrounds";
 
 export default function Home() {
@@ -11,17 +11,23 @@ export default function Home() {
       <div className="relative z-10">
         <Hero />
 
-        {/* YouTube Shorts Strip - Bridge between Hero and Content */}
+        {/* YouTube Shorts Strip */}
         <ShortsShowcase />
 
-        {/* YouTube & TikTok Readings */}
+        {/* Readings Overview */}
         <ReadingsShowcase />
 
-        {/* Gradient divider: Readings → App Showcase */}
+        {/* Gradient divider */}
         <div className="section-divider mx-auto max-w-4xl" />
 
-        {/* App Showcase */}
+        {/* YouTube Showcase */}
         <AppShowcase />
+
+        {/* Gradient divider */}
+        <div className="section-divider mx-auto max-w-4xl my-4" />
+
+        {/* TikTok Conversion Section */}
+        <TikTokShowcase />
       </div>
     </div>
   );
