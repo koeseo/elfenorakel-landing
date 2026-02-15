@@ -83,7 +83,7 @@ export const ProfilFooter = ({
             {hasPdfAccess ? (
               <>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
-                  Lade dein vollstaendiges Seelen-Profil als PDF herunter.
+                  Lade dein vollständiges Seelen-Profil als PDF herunter.
                 </p>
                 <button
                   className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold uppercase tracking-wider bg-gradient-to-br from-[var(--gold)] to-[var(--gold-dim)] text-white shadow-[0_4px_24px_rgba(201,163,92,0.3)] hover:shadow-[0_8px_40px_rgba(201,163,92,0.5)] transition-all duration-300"
@@ -99,7 +99,7 @@ export const ProfilFooter = ({
             ) : (
               <>
                 <p className="text-sm text-[var(--text-muted)] mb-4">
-                  Verfuegbar ab dem Report-Paket.
+                  Verfügbar ab dem Report-Paket.
                 </p>
                 <Link
                   href={`/seelen-profil/vorschau?id=${profileId}`}
@@ -123,7 +123,7 @@ export const ProfilFooter = ({
             {hasVideoAccess ? (
               <>
                 <p className="text-sm text-[var(--text-secondary)] mb-4">
-                  Elfis persoenliche Video-Analyse deines Profils.
+                  Elfis persönliche Video-Analyse deines Profils.
                 </p>
                 <div className="aspect-video rounded-xl bg-[var(--bg-card)] border border-[var(--glass-border)] flex items-center justify-center">
                   <p className="text-sm text-[var(--text-muted)]">
@@ -134,7 +134,7 @@ export const ProfilFooter = ({
             ) : (
               <>
                 <p className="text-sm text-[var(--text-muted)] mb-4">
-                  Nur im Premium-Paket verfuegbar.
+                  Nur im Premium-Paket verfügbar.
                 </p>
                 <Link
                   href={`/seelen-profil/vorschau?id=${profileId}`}
@@ -211,13 +211,13 @@ export const ProfilFooter = ({
             Du willst tiefer gehen?
           </h3>
           <p className="text-[var(--text-secondary)] mb-8 max-w-lg mx-auto">
-            Buche ein persoenliches Reading mit Elfi und erhalte individuelle Beratung zu deinem Seelen-Profil.
+            Buche ein persönliches Reading mit Elfi und erhalte individuelle Beratung zu deinem Seelen-Profil.
           </p>
           <Link
             href="/readings"
             className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-lg font-semibold uppercase tracking-wider bg-gradient-to-br from-[var(--gold)] to-[var(--gold-dim)] text-white shadow-[0_4px_24px_rgba(201,163,92,0.3)] hover:shadow-[0_8px_40px_rgba(201,163,92,0.5)] transition-all duration-300 btn-cta-glow"
           >
-            Persoenliches Reading buchen
+            Persönliches Reading buchen
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

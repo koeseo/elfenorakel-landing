@@ -23,7 +23,7 @@ export const ProfilKosmischeKoordinaten = ({
             Deine Kosmischen Koordinaten
           </h2>
           <p className="text-[var(--text-secondary)] text-base md:text-lg max-w-2xl mx-auto">
-            Mondphase, Planet und Chakra — die kosmischen Kraefte, die dein Wesen formen.
+            Mondphase, Planet und Chakra — die kosmischen Kräfte, die dein Wesen formen.
           </p>
         </FadeIn>
 

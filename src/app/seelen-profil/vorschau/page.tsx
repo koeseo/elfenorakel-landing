@@ -18,7 +18,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Dein Seelen-Profil | Vorschau",
-  description: "Dein persoenliches Seelen-Profil wurde berechnet. Schalte jetzt alle 9 Dimensionen frei.",
+  description: "Dein persönliches Seelen-Profil wurde berechnet. Schalte jetzt alle 9 Dimensionen frei.",
 };
 
 interface VorschauPageProps {
@@ -53,7 +53,7 @@ export default async function VorschauPage({ searchParams }: VorschauPageProps) 
     { icon: Star, label: "Planet & Chakra", desc: "Deine kosmischen Verbindungen" },
     { icon: Heart, label: "In Beziehungen", desc: "Wie du liebst und verbindest" },
     { icon: Compass, label: "Kosmische Aufgabe", desc: "Deine Seelenaufgabe in diesem Leben" },
-    { icon: Zap, label: "Jahres-Energie 2026", desc: "Deine persoenliche Jahresprognose" },
+    { icon: Zap, label: "Jahres-Energie 2026", desc: "Deine persönliche Jahresprognose" },
   ];
 
   const tiers = [
@@ -82,7 +82,7 @@ export default async function VorschauPage({ searchParams }: VorschauPageProps) 
         "Alles aus Report",
         "Kosmische Aufgabe",
         "Jahres-Energie",
-        "Elfis persoenliche Botschaft",
+        "Elfis persönliche Botschaft",
         "Interaktives Dashboard",
       ],
       popular: false,
@@ -170,10 +170,10 @@ export default async function VorschauPage({ searchParams }: VorschauPageProps) 
         {/* CTA */}
         <div className="text-center mb-12">
           <h3 className="text-xl md:text-2xl font-bold text-[var(--text-primary)] mb-4">
-            Schalte dein vollstaendiges Profil frei
+            Schalte dein vollständiges Profil frei
           </h3>
           <p className="text-[var(--text-secondary)] mb-8 max-w-lg mx-auto">
-            Entdecke alle 9 Dimensionen deines Seelen-Profils und erhalte Elfis persoenliche Botschaft an dich.
+            Entdecke alle 9 Dimensionen deines Seelen-Profils und erhalte Elfis persönliche Botschaft an dich.
           </p>
 
           {/* Tier cards */}

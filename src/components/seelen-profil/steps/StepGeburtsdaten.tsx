@@ -130,7 +130,7 @@ export const StepGeburtsdaten = ({
             "
           />
           <p className="text-[var(--text-muted)] text-xs mt-1">
-            Fuer eine genauere Mondphase-Berechnung
+            Für eine genauere Mondphase-Berechnung
           </p>
         </div>
 

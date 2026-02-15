@@ -28,7 +28,7 @@ export const StepEmail = ({ email, onUpdate, onSubmit }: StepEmailProps) => {
           Fast geschafft!
         </h2>
         <p className="text-[var(--text-secondary)] text-sm md:text-base">
-          Dein Seelen-Profil wird gleich berechnet. Unter welcher E-Mail sollen wir es fuer dich speichern?
+          Dein Seelen-Profil wird gleich berechnet. Unter welcher E-Mail sollen wir es für dich speichern?
         </p>
       </div>
 
@@ -65,7 +65,7 @@ export const StepEmail = ({ email, onUpdate, onSubmit }: StepEmailProps) => {
           />
           {touched && !valid && (
             <p className="text-red-400 text-xs mt-1">
-              Bitte gib eine gueltige E-Mail-Adresse ein.
+              Bitte gib eine gültige E-Mail-Adresse ein.
             </p>
           )}
         </div>
@@ -74,7 +74,7 @@ export const StepEmail = ({ email, onUpdate, onSubmit }: StepEmailProps) => {
         <div className="flex items-start gap-3 p-3 rounded-lg bg-[var(--glass-bg)] border border-[var(--glass-border)]">
           <Shield className="w-4 h-4 text-[var(--teal)] mt-0.5 flex-shrink-0" />
           <p className="text-xs text-[var(--text-muted)]">
-            Dein Profil wird fuer immer unter deiner E-Mail gespeichert. Wir respektieren deine Privatsphaere.{" "}
+            Dein Profil wird für immer unter deiner E-Mail gespeichert. Wir respektieren deine Privatsphäre.{" "}
             <Link
               href="/datenschutz"
               className="text-[var(--teal)] underline underline-offset-2 hover:text-[var(--teal-light)]"

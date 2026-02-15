@@ -99,7 +99,7 @@ export const seelenFragen: SeelenFrage[] = [
   },
   {
     id: 'kraft',
-    frage: 'Deine staerkste Kraft ist...',
+    frage: 'Deine stärkste Kraft ist...',
     typ: 'wort',
     optionen: [
       {
@@ -211,7 +211,7 @@ export const seelenFragen: SeelenFrage[] = [
   },
   {
     id: 'pfad',
-    frage: 'Welcher Pfad leuchtet fuer dich?',
+    frage: 'Welcher Pfad leuchtet für dich?',
     typ: 'bild',
     optionen: [
       {

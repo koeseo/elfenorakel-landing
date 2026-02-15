@@ -23,7 +23,7 @@ export const ProfilJahresEnergie = ({
             </span>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-gradient-gold mb-4">
-            Deine Energie fuer {jahr}
+            Deine Energie für {jahr}
           </h2>
         </FadeIn>
 
@@ -43,7 +43,7 @@ export const ProfilJahresEnergie = ({
         <FadeIn delay={0.2}>
           <div className="glass-card p-6 md:p-8">
             <h4 className="text-lg font-semibold text-[var(--text-primary)] mb-6">
-              Deine 3 Impulse fuer dieses Jahr
+              Deine 3 Impulse für dieses Jahr
             </h4>
             <ul className="space-y-4">
               {jahresEnergie.impulse.map((impuls, index) => (
@@ -63,7 +63,7 @@ export const ProfilJahresEnergie = ({
         {/* Note */}
         <FadeIn delay={0.3}>
           <p className="text-center text-sm text-[var(--text-muted)] mt-8 italic">
-            Komm {jahr + 1} wieder fuer deine neue Jahresenergie
+            Komm {jahr + 1} wieder für deine neue Jahresenergie
           </p>
         </FadeIn>
       </div>

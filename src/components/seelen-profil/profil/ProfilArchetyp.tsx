@@ -8,7 +8,7 @@ interface ProfilArchetypProps {
 
 const sections = [
   { key: "wesen", title: "Dein Wesen", icon: Eye },
-  { key: "staerken", title: "Deine Staerken", icon: Sparkles },
+  { key: "staerken", title: "Deine Stärken", icon: Sparkles },
   { key: "schattenSeite", title: "Deine Schatten-Seite", icon: Shield },
   { key: "inBeziehungen", title: "In Beziehungen", icon: Heart },
   { key: "imBeruf", title: "Im Beruf", icon: Briefcase },
@@ -61,7 +61,7 @@ export const ProfilArchetyp = ({ archetyp }: ProfilArchetypProps) => {
                   Elfis Botschaft an dich
                 </h3>
                 <p className="text-sm text-[var(--text-muted)]">
-                  Persoenlich fuer dich
+                  Persönlich für dich
                 </p>
               </div>
             </div>

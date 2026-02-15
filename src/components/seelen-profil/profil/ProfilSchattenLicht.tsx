@@ -19,7 +19,7 @@ export const ProfilSchattenLicht = ({
             Schatten & Licht
           </h2>
           <p className="text-[var(--text-secondary)] text-base md:text-lg max-w-2xl mx-auto">
-            Jede Seele traegt Schatten und Licht in sich. Diese beiden Karten spiegeln deine verborgenen Seiten wider.
+            Jede Seele trägt Schatten und Licht in sich. Diese beiden Karten spiegeln deine verborgenen Seiten wider.
           </p>
         </FadeIn>
 
@@ -62,7 +62,7 @@ export const ProfilSchattenLicht = ({
 
               <p className="text-[var(--text-secondary)] leading-relaxed text-sm md:text-base">
                 Die <span className="text-purple-300 font-medium">{formatKartenName(schattenKarte)}</span> als
-                deine Schatten-Karte zeigt die Themen, die in deinem Unbewussten wirken. Sie laedt dich ein,
+                deine Schatten-Karte zeigt die Themen, die in deinem Unbewussten wirken. Sie lädt dich ein,
                 diese verborgenen Aspekte liebevoll anzuschauen und zu integrieren. In deinem Schatten liegt
                 ungenutztes Potenzial, das darauf wartet, ans Licht gebracht zu werden.
               </p>
@@ -106,7 +106,7 @@ export const ProfilSchattenLicht = ({
 
               <p className="text-[var(--text-secondary)] leading-relaxed text-sm md:text-base">
                 Die <span className="text-[var(--gold-light)] font-medium">{formatKartenName(lichtKarte)}</span> als
-                deine Licht-Karte repraesentiert dein strahlendes Potenzial und deine hoechsten Gaben.
+                deine Licht-Karte repräsentiert dein strahlendes Potenzial und deine höchsten Gaben.
                 Sie zeigt dir den Weg zu deiner vollen Entfaltung und erinnert dich an die Kraft,
                 die du in die Welt tragen darfst.
               </p>
