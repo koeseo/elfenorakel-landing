@@ -20,6 +20,13 @@ export async function POST(request: Request) {
       );
     }
 
+    if (!Array.isArray(body.seelenFragen) || body.seelenFragen.length !== 8) {
+      return Response.json(
+        { error: "Es muessen genau 8 Seelen-Fragen beantwortet werden." },
+        { status: 400 }
+      );
+    }
+
     // Calculate the profile
     const profil = berechneSeelenprofil({
       vorname: body.vorname,

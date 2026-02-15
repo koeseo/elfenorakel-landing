@@ -261,31 +261,38 @@ function lightScore(card: TarotCard): number {
  * Fallback: equal weight across all elements.
  */
 const SEELEN_FRAGEN_ELEMENT_WEIGHTS: Record<string, Partial<Record<Element, number>>> = {
-  // Nature preference
-  'natur_wald': { erde: 3 },
-  'natur_meer': { wasser: 3 },
-  'natur_berge': { luft: 3 },
-  'natur_wueste': { feuer: 3 },
-  // Energy preference
-  'energie_aktion': { feuer: 3 },
-  'energie_gefuehl': { wasser: 3 },
-  'energie_denken': { luft: 3 },
-  'energie_ruhe': { erde: 3 },
-  // Season preference
-  'jahreszeit_fruehling': { luft: 2 },
-  'jahreszeit_sommer': { feuer: 2 },
-  'jahreszeit_herbst': { erde: 2 },
-  'jahreszeit_winter': { wasser: 2 },
-  // Time of day
-  'tageszeit_morgen': { luft: 2 },
-  'tageszeit_mittag': { feuer: 2 },
-  'tageszeit_abend': { erde: 2 },
-  'tageszeit_nacht': { wasser: 2 },
-  // Challenge response
-  'herausforderung_kampf': { feuer: 2 },
-  'herausforderung_anpassung': { wasser: 2 },
-  'herausforderung_analyse': { luft: 2 },
-  'herausforderung_geduld': { erde: 2 },
+  // Q1: Welches Element ruft dich?
+  'element_feuer': { feuer: 3 },
+  'element_wasser': { wasser: 3 },
+  'element_luft': { luft: 3 },
+  'element_erde': { erde: 3 },
+  // Q2: Wohin zieht es deine Seele?
+  'seele_sterne': { luft: 2, feuer: 1 },
+  'seele_tiefsee': { wasser: 2, erde: 1 },
+  // Q3: In der Stille findest du...
+  'stille_klarheit': { luft: 2, erde: 1 },
+  'stille_heilung': { wasser: 2, feuer: 1 },
+  // Q4: Deine staerkste Kraft ist...
+  'kraft_intuition': { wasser: 3 },
+  'kraft_mut': { feuer: 3 },
+  'kraft_weisheit': { luft: 3 },
+  'kraft_ausdauer': { erde: 3 },
+  // Q5: Welche Energie brauchst du jetzt?
+  'energie_erneuerung': { feuer: 2, luft: 1 },
+  'energie_ruhe': { erde: 2, wasser: 1 },
+  'energie_freiheit': { luft: 2, feuer: 1 },
+  'energie_tiefe': { wasser: 2, erde: 1 },
+  // Q6: Was ruft dich im Mondlicht?
+  'mondlicht_tanz': { feuer: 2, wasser: 1 },
+  'mondlicht_stille': { wasser: 2, erde: 1 },
+  // Q7: Dein inneres Feuer brennt fuer...
+  'feuer_wahrheit': { luft: 2, feuer: 1 },
+  'feuer_liebe': { wasser: 2, feuer: 1 },
+  'feuer_schoepfung': { feuer: 2, luft: 1 },
+  'feuer_bestaendigkeit': { erde: 2, wasser: 1 },
+  // Q8: Welcher Pfad leuchtet fuer dich?
+  'pfad_unbekannt': { luft: 2, wasser: 1 },
+  'pfad_licht': { feuer: 2, erde: 1 },
 };
 
 // ---------------------------------------------------------------------------

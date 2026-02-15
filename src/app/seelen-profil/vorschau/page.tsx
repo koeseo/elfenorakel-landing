@@ -59,13 +59,13 @@ export default async function VorschauPage({ searchParams }: VorschauPageProps) 
   const tiers = [
     {
       name: "Basis",
-      price: "9,99",
+      price: "49",
       features: ["Archetyp-Analyse", "Element-Signatur", "Mondphase"],
       popular: false,
     },
     {
       name: "Report",
-      price: "19,99",
+      price: "69",
       features: [
         "Alles aus Basis",
         "Schatten & Licht Karten",
@@ -77,7 +77,7 @@ export default async function VorschauPage({ searchParams }: VorschauPageProps) 
     },
     {
       name: "Premium",
-      price: "29,99",
+      price: "99",
       features: [
         "Alles aus Report",
         "Kosmische Aufgabe",
@@ -141,16 +141,8 @@ export default async function VorschauPage({ searchParams }: VorschauPageProps) 
               key={section.label}
               className="glass-card p-5 md:p-6 relative overflow-hidden"
             >
-              {/* Blur overlay */}
-              <div className="absolute inset-0 backdrop-blur-[8px] bg-[var(--bg-primary)]/60 z-10 flex items-center justify-center">
-                <div className="flex items-center gap-2 text-[var(--text-muted)]">
-                  <Lock className="w-4 h-4" />
-                  <span className="text-sm">Gesperrt</span>
-                </div>
-              </div>
-
-              {/* Underlying content (blurred) */}
-              <div className="flex items-center gap-4">
+              {/* Underlying content (directly blurred) */}
+              <div className="flex items-center gap-4" style={{ filter: 'blur(8px)', userSelect: 'none', pointerEvents: 'none' }}>
                 <div className="w-10 h-10 rounded-xl bg-[var(--gold)]/10 flex items-center justify-center flex-shrink-0">
                   <section.icon className="w-5 h-5 text-[var(--gold)]" />
                 </div>
@@ -161,6 +153,14 @@ export default async function VorschauPage({ searchParams }: VorschauPageProps) 
                   <p className="text-sm text-[var(--text-secondary)]">
                     {section.desc}
                   </p>
+                </div>
+              </div>
+
+              {/* Lock overlay on top */}
+              <div className="absolute inset-0 z-10 bg-[var(--bg-primary)]/40 flex items-center justify-center">
+                <div className="flex items-center gap-2 text-[var(--text-muted)]">
+                  <Lock className="w-4 h-4" />
+                  <span className="text-sm">Gesperrt</span>
                 </div>
               </div>
             </div>
