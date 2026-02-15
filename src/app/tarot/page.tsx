@@ -5,99 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Sparkles, Search, Filter } from "lucide-react";
 import { CosmicBackground } from "@/components/backgrounds";
-
-// Card data organized by suit
-const majorArcana = [
-  { id: "narr", name: "Der Narr", number: 0, image: "/cards/tarot/major-00-narr.webp", meaning: "Neubeginn, Unschuld, Spontanität, Abenteuer" },
-  { id: "magier", name: "Der Magier", number: 1, image: "/cards/tarot/major-01-magier.webp", meaning: "Willenskraft, Manifestation, Talent, Ressourcen" },
-  { id: "hohepriesterin", name: "Die Hohepriesterin", number: 2, image: "/cards/tarot/major-02-hohepriesterin.webp", meaning: "Intuition, Geheimnisse, innere Weisheit, Mystik" },
-  { id: "herrscherin", name: "Die Herrscherin", number: 3, image: "/cards/tarot/major-03-herrscherin.webp", meaning: "Fülle, Natur, Kreativität, Mütterlichkeit" },
-  { id: "herrscher", name: "Der Herrscher", number: 4, image: "/cards/tarot/major-04-herrscher.webp", meaning: "Struktur, Autorität, Stabilität, Führung" },
-  { id: "hierophant", name: "Der Hierophant", number: 5, image: "/cards/tarot/major-05-hierophant.webp", meaning: "Tradition, Spiritualität, Weisheit, Lehre" },
-  { id: "liebenden", name: "Die Liebenden", number: 6, image: "/cards/tarot/major-06-liebenden.webp", meaning: "Liebe, Harmonie, Entscheidungen, Verbindung" },
-  { id: "wagen", name: "Der Wagen", number: 7, image: "/cards/tarot/major-07-wagen.webp", meaning: "Willenskraft, Triumph, Kontrolle, Fortschritt" },
-  { id: "kraft", name: "Die Kraft", number: 8, image: "/cards/tarot/major-08-kraft.webp", meaning: "Mut, Stärke, Sanftheit, innere Kraft" },
-  { id: "eremit", name: "Der Eremit", number: 9, image: "/cards/tarot/major-09-eremit.webp", meaning: "Innenschau, Suche, Weisheit, Einsamkeit" },
-  { id: "schicksal", name: "Rad des Schicksals", number: 10, image: "/cards/tarot/major-10-schicksal.webp", meaning: "Wandel, Zyklen, Schicksal, Glück" },
-  { id: "gerechtigkeit", name: "Gerechtigkeit", number: 11, image: "/cards/tarot/major-11-gerechtigkeit.webp", meaning: "Wahrheit, Fairness, Karma, Balance" },
-  { id: "gehaengte", name: "Der Gehängte", number: 12, image: "/cards/tarot/major-12-gehaengte.webp", meaning: "Loslassen, neue Perspektive, Pause, Opfer" },
-  { id: "tod", name: "Der Tod", number: 13, image: "/cards/tarot/major-13-tod.webp", meaning: "Transformation, Ende, Neubeginn, Wandel" },
-  { id: "maessigung", name: "Mäßigung", number: 14, image: "/cards/tarot/major-14-maessigung.webp", meaning: "Balance, Geduld, Harmonie, Mäßigung" },
-  { id: "teufel", name: "Der Teufel", number: 15, image: "/cards/tarot/major-15-teufel.webp", meaning: "Bindungen, Schatten, Befreiung, Versuchung" },
-  { id: "turm", name: "Der Turm", number: 16, image: "/cards/tarot/major-16-turm.webp", meaning: "Umbruch, Offenbarung, Erneuerung, Chaos" },
-  { id: "stern", name: "Der Stern", number: 17, image: "/cards/tarot/major-17-stern.webp", meaning: "Hoffnung, Inspiration, Heilung, Frieden" },
-  { id: "mond", name: "Der Mond", number: 18, image: "/cards/tarot/major-18-mond.webp", meaning: "Illusion, Intuition, Unbewusstes, Angst" },
-  { id: "sonne", name: "Die Sonne", number: 19, image: "/cards/tarot/major-19-sonne.webp", meaning: "Freude, Erfolg, Vitalität, Optimismus" },
-  { id: "gericht", name: "Das Gericht", number: 20, image: "/cards/tarot/major-20-gericht.webp", meaning: "Erweckung, Berufung, Erneuerung, Urteil" },
-  { id: "welt", name: "Die Welt", number: 21, image: "/cards/tarot/major-21-welt.webp", meaning: "Vollendung, Integration, Erfüllung, Einheit" },
-];
-
-const minorArcana = {
-  staebe: [
-    { id: "staebe-ass", name: "Ass der Stäbe", image: "/cards/tarot/staebe-01-ass.webp", meaning: "Inspiration, Neubeginn, Potenzial" },
-    { id: "staebe-zwei", name: "Zwei der Stäbe", image: "/cards/tarot/staebe-02-zwei.webp", meaning: "Planung, Entscheidungen, Fortschritt" },
-    { id: "staebe-drei", name: "Drei der Stäbe", image: "/cards/tarot/staebe-03-drei.webp", meaning: "Expansion, Weitblick, Warten" },
-    { id: "staebe-vier", name: "Vier der Stäbe", image: "/cards/tarot/staebe-04-vier.webp", meaning: "Feier, Heimat, Harmonie" },
-    { id: "staebe-fuenf", name: "Fünf der Stäbe", image: "/cards/tarot/staebe-05-fuenf.webp", meaning: "Konflikt, Wettbewerb, Herausforderung" },
-    { id: "staebe-sechs", name: "Sechs der Stäbe", image: "/cards/tarot/staebe-06-sechs.webp", meaning: "Sieg, Anerkennung, Erfolg" },
-    { id: "staebe-sieben", name: "Sieben der Stäbe", image: "/cards/tarot/staebe-07-sieben.webp", meaning: "Verteidigung, Ausdauer, Standhaftigkeit" },
-    { id: "staebe-acht", name: "Acht der Stäbe", image: "/cards/tarot/staebe-08-acht.webp", meaning: "Schnelligkeit, Nachrichten, Bewegung" },
-    { id: "staebe-neun", name: "Neun der Stäbe", image: "/cards/tarot/staebe-09-neun.webp", meaning: "Widerstandskraft, Durchhalten, letzte Hürde" },
-    { id: "staebe-zehn", name: "Zehn der Stäbe", image: "/cards/tarot/staebe-10-zehn.webp", meaning: "Last, Verantwortung, Erschöpfung" },
-    { id: "staebe-bube", name: "Bube der Stäbe", image: "/cards/tarot/staebe-11-bube.webp", meaning: "Entdeckung, Begeisterung, Neugier" },
-    { id: "staebe-ritter", name: "Ritter der Stäbe", image: "/cards/tarot/staebe-12-ritter.webp", meaning: "Energie, Leidenschaft, Abenteuer" },
-    { id: "staebe-koenigin", name: "Königin der Stäbe", image: "/cards/tarot/staebe-13-koenigin.webp", meaning: "Selbstvertrauen, Wärme, Entschlossenheit" },
-    { id: "staebe-koenig", name: "König der Stäbe", image: "/cards/tarot/staebe-14-koenig.webp", meaning: "Vision, Führung, Unternehmergeist" },
-  ],
-  kelche: [
-    { id: "kelche-ass", name: "Ass der Kelche", image: "/cards/tarot/kelche-01-ass.webp", meaning: "Liebe, Emotionen, Intuition" },
-    { id: "kelche-zwei", name: "Zwei der Kelche", image: "/cards/tarot/kelche-02-zwei.webp", meaning: "Partnerschaft, Verbindung, Harmonie" },
-    { id: "kelche-drei", name: "Drei der Kelche", image: "/cards/tarot/kelche-03-drei.webp", meaning: "Feier, Freundschaft, Kreativität" },
-    { id: "kelche-vier", name: "Vier der Kelche", image: "/cards/tarot/kelche-04-vier.webp", meaning: "Kontemplation, Apathie, Neubewertung" },
-    { id: "kelche-fuenf", name: "Fünf der Kelche", image: "/cards/tarot/kelche-05-fuenf.webp", meaning: "Verlust, Trauer, Enttäuschung" },
-    { id: "kelche-sechs", name: "Sechs der Kelche", image: "/cards/tarot/kelche-06-sechs.webp", meaning: "Nostalgie, Erinnerungen, Kindheit" },
-    { id: "kelche-sieben", name: "Sieben der Kelche", image: "/cards/tarot/kelche-07-sieben.webp", meaning: "Fantasie, Illusionen, Wahl" },
-    { id: "kelche-acht", name: "Acht der Kelche", image: "/cards/tarot/kelche-08-acht.webp", meaning: "Abschied, Weitergehen, Suche" },
-    { id: "kelche-neun", name: "Neun der Kelche", image: "/cards/tarot/kelche-09-neun.webp", meaning: "Zufriedenheit, Wünsche, Erfüllung" },
-    { id: "kelche-zehn", name: "Zehn der Kelche", image: "/cards/tarot/kelche-10-zehn.webp", meaning: "Harmonie, Familie, Glück" },
-    { id: "kelche-bube", name: "Bube der Kelche", image: "/cards/tarot/kelche-11-bube.webp", meaning: "Kreativität, Sensibilität, Nachrichten" },
-    { id: "kelche-ritter", name: "Ritter der Kelche", image: "/cards/tarot/kelche-12-ritter.webp", meaning: "Romantik, Charme, Fantasie" },
-    { id: "kelche-koenigin", name: "Königin der Kelche", image: "/cards/tarot/kelche-13-koenigin.webp", meaning: "Mitgefühl, Fürsorge, Intuition" },
-    { id: "kelche-koenig", name: "König der Kelche", image: "/cards/tarot/kelche-14-koenig.webp", meaning: "Emotionale Balance, Diplomatie, Weisheit" },
-  ],
-  schwerter: [
-    { id: "schwerter-ass", name: "Ass der Schwerter", image: "/cards/tarot/schwerter-01-ass.webp", meaning: "Klarheit, Wahrheit, Durchbruch" },
-    { id: "schwerter-zwei", name: "Zwei der Schwerter", image: "/cards/tarot/schwerter-02-zwei.webp", meaning: "Entscheidung, Blockade, Abwägung" },
-    { id: "schwerter-drei", name: "Drei der Schwerter", image: "/cards/tarot/schwerter-03-drei.webp", meaning: "Herzschmerz, Trauer, Schmerz" },
-    { id: "schwerter-vier", name: "Vier der Schwerter", image: "/cards/tarot/schwerter-04-vier.webp", meaning: "Ruhe, Erholung, Meditation" },
-    { id: "schwerter-fuenf", name: "Fünf der Schwerter", image: "/cards/tarot/schwerter-05-fuenf.webp", meaning: "Konflikt, Niederlage, Ego" },
-    { id: "schwerter-sechs", name: "Sechs der Schwerter", image: "/cards/tarot/schwerter-06-sechs.webp", meaning: "Übergang, Weitergehen, Heilung" },
-    { id: "schwerter-sieben", name: "Sieben der Schwerter", image: "/cards/tarot/schwerter-07-sieben.webp", meaning: "Täuschung, Strategie, Geheimnis" },
-    { id: "schwerter-acht", name: "Acht der Schwerter", image: "/cards/tarot/schwerter-08-acht.webp", meaning: "Gefangenschaft, Einschränkung, Angst" },
-    { id: "schwerter-neun", name: "Neun der Schwerter", image: "/cards/tarot/schwerter-09-neun.webp", meaning: "Angst, Albträume, Sorgen" },
-    { id: "schwerter-zehn", name: "Zehn der Schwerter", image: "/cards/tarot/schwerter-10-zehn.webp", meaning: "Ende, Zusammenbruch, Neubeginn" },
-    { id: "schwerter-bube", name: "Bube der Schwerter", image: "/cards/tarot/schwerter-11-bube.webp", meaning: "Neugier, Wachsamkeit, Neuigkeiten" },
-    { id: "schwerter-ritter", name: "Ritter der Schwerter", image: "/cards/tarot/schwerter-12-ritter.webp", meaning: "Ehrgeiz, Schnelligkeit, Aktion" },
-    { id: "schwerter-koenigin", name: "Königin der Schwerter", image: "/cards/tarot/schwerter-13-koenigin.webp", meaning: "Unabhängigkeit, Klarheit, Ehrlichkeit" },
-    { id: "schwerter-koenig", name: "König der Schwerter", image: "/cards/tarot/schwerter-14-koenig.webp", meaning: "Autorität, Intellekt, Wahrheit" },
-  ],
-  muenzen: [
-    { id: "muenzen-ass", name: "Ass der Münzen", image: "/cards/tarot/muenzen-01-ass.webp", meaning: "Chance, Manifestation, Fülle" },
-    { id: "muenzen-zwei", name: "Zwei der Münzen", image: "/cards/tarot/muenzen-02-zwei.webp", meaning: "Balance, Anpassung, Jonglieren" },
-    { id: "muenzen-drei", name: "Drei der Münzen", image: "/cards/tarot/muenzen-03-drei.webp", meaning: "Teamwork, Handwerk, Lernen" },
-    { id: "muenzen-vier", name: "Vier der Münzen", image: "/cards/tarot/muenzen-04-vier.webp", meaning: "Sicherheit, Kontrolle, Festhalten" },
-    { id: "muenzen-fuenf", name: "Fünf der Münzen", image: "/cards/tarot/muenzen-05-fuenf.webp", meaning: "Not, Verlust, Isolation" },
-    { id: "muenzen-sechs", name: "Sechs der Münzen", image: "/cards/tarot/muenzen-06-sechs.webp", meaning: "Großzügigkeit, Teilen, Balance" },
-    { id: "muenzen-sieben", name: "Sieben der Münzen", image: "/cards/tarot/muenzen-07-sieben.webp", meaning: "Geduld, Investition, Ernte" },
-    { id: "muenzen-acht", name: "Acht der Münzen", image: "/cards/tarot/muenzen-08-acht.webp", meaning: "Fleiß, Meisterschaft, Hingabe" },
-    { id: "muenzen-neun", name: "Neun der Münzen", image: "/cards/tarot/muenzen-09-neun.webp", meaning: "Fülle, Unabhängigkeit, Luxus" },
-    { id: "muenzen-zehn", name: "Zehn der Münzen", image: "/cards/tarot/muenzen-10-zehn.webp", meaning: "Vermächtnis, Familie, Wohlstand" },
-    { id: "muenzen-bube", name: "Bube der Münzen", image: "/cards/tarot/muenzen-11-bube.webp", meaning: "Manifestation, Studium, Möglichkeiten" },
-    { id: "muenzen-ritter", name: "Ritter der Münzen", image: "/cards/tarot/muenzen-12-ritter.webp", meaning: "Effizienz, Routine, Beständigkeit" },
-    { id: "muenzen-koenigin", name: "Königin der Münzen", image: "/cards/tarot/muenzen-13-koenigin.webp", meaning: "Fürsorge, Praktikabilität, Sicherheit" },
-    { id: "muenzen-koenig", name: "König der Münzen", image: "/cards/tarot/muenzen-14-koenig.webp", meaning: "Erfolg, Disziplin, Wohlstand" },
-  ],
-};
+import { allCards as allTarotCards, type TarotCard } from "@/lib/seelen-profil/tarot-karten";
 
 type FilterType = "all" | "major" | "staebe" | "kelche" | "schwerter" | "muenzen";
 
@@ -121,23 +29,10 @@ const suitColors: Record<string, string> = {
 export default function TarotGalleryPage() {
   const [filter, setFilter] = useState<FilterType>("all");
   const [search, setSearch] = useState("");
-  const [selectedCard, setSelectedCard] = useState<{
-    id: string;
-    name: string;
-    image: string;
-    meaning: string;
-    number?: number;
-    suit?: string;
-  } | null>(null);
+  const [selectedCard, setSelectedCard] = useState<TarotCard | null>(null);
 
-  // Combine and filter cards
-  const allCards = [
-    ...majorArcana.map(c => ({ ...c, suit: "major" })),
-    ...minorArcana.staebe.map(c => ({ ...c, suit: "staebe" })),
-    ...minorArcana.kelche.map(c => ({ ...c, suit: "kelche" })),
-    ...minorArcana.schwerter.map(c => ({ ...c, suit: "schwerter" })),
-    ...minorArcana.muenzen.map(c => ({ ...c, suit: "muenzen" })),
-  ];
+  // All cards from shared library (already includes suit field)
+  const allCards = allTarotCards;
 
   const filteredCards = allCards.filter(card => {
     const matchesFilter = filter === "all" || card.suit === filter;
@@ -302,11 +197,11 @@ export default function TarotGalleryPage() {
                 <div
                   className="inline-block px-2 py-0.5 rounded text-xs font-medium mb-2"
                   style={{
-                    backgroundColor: `${suitColors[(selectedCard as typeof allCards[0]).suit]}20`,
-                    color: suitColors[(selectedCard as typeof allCards[0]).suit],
+                    backgroundColor: `${suitColors[selectedCard.suit]}20`,
+                    color: suitColors[selectedCard.suit],
                   }}
                 >
-                  {filterLabels[(selectedCard as typeof allCards[0]).suit as FilterType] || "Tarot"}
+                  {filterLabels[selectedCard.suit as FilterType] || "Tarot"}
                 </div>
                 <h2 className="text-2xl font-bold text-gradient-gold mb-4">
                   {selectedCard.name}
