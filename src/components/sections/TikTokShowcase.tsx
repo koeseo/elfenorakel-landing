@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Music2, Heart, MessageCircle, Share2, Sparkles, Star, Eye, Flame, ArrowRight } from "lucide-react";
+import { Music2, Heart, MessageCircle, Share2, Sparkles, Star, Flame, ArrowRight } from "lucide-react";
+import { FadeIn } from "@/components/ui";
 
 const contentPillars = [
   { label: "Tagesimpulse", emoji: "✨" },
@@ -24,11 +24,8 @@ export const TikTokShowcase = () => {
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: TikTok Phone Mockup */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+          <FadeIn
+            direction="left"
             className="relative mx-auto lg:mx-0 order-2 lg:order-1"
           >
             <div className="relative w-[280px] md:w-[300px] mx-auto">
@@ -57,7 +54,7 @@ export const TikTokShowcase = () => {
 
                   {/* TikTok-style content */}
                   <div className="absolute inset-0 flex flex-col justify-between p-4 pt-10">
-                    {/* Top: "Live" + "Following | For You" tabs */}
+                    {/* Top: "Following | For You" tabs */}
                     <div className="flex items-center justify-center gap-6 text-xs">
                       <span className="text-white/50">Folge ich</span>
                       <span className="text-white font-semibold border-b-2 border-white pb-1">Für dich</span>
@@ -65,7 +62,6 @@ export const TikTokShowcase = () => {
 
                     {/* Center: Profile + Content */}
                     <div className="flex-1 flex flex-col items-center justify-center text-center">
-                      {/* Profile circle with teal ring (matches her TikTok) */}
                       <div className="w-20 h-20 rounded-full border-2 border-[var(--teal)] p-0.5 mb-4">
                         <div className="w-full h-full rounded-full bg-gradient-to-br from-[var(--gold)]/30 via-[#1a0a2e] to-[var(--teal)]/30 flex items-center justify-center">
                           <Sparkles className="w-8 h-8 text-[var(--gold)]" />
@@ -79,7 +75,6 @@ export const TikTokShowcase = () => {
 
                     {/* Bottom: Engagement overlay */}
                     <div className="space-y-3">
-                      {/* Caption preview */}
                       <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 border border-white/10">
                         <p className="text-white text-xs font-medium mb-1">
                           Deine Herzenergie explodiert 💗✨
@@ -89,7 +84,6 @@ export const TikTokShowcase = () => {
                         </p>
                       </div>
 
-                      {/* Action bar */}
                       <div className="flex items-center justify-between px-2">
                         <div className="flex items-center gap-1">
                           <Music2 className="w-3 h-3 text-white/60" />
@@ -120,14 +114,11 @@ export const TikTokShowcase = () => {
               {/* Glow behind phone */}
               <div className="absolute -inset-6 bg-gradient-to-r from-[#F472B6]/15 via-[var(--teal)]/15 to-[#F472B6]/15 rounded-[3rem] blur-2xl -z-10" />
             </div>
-          </motion.div>
+          </FadeIn>
 
           {/* Right: Content + CTA */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+          <FadeIn
+            direction="right"
             className="order-1 lg:order-2"
           >
             {/* Badge */}
@@ -191,7 +182,7 @@ export const TikTokShowcase = () => {
             <p className="text-[var(--text-muted)] text-xs mt-3">
               Kostenlos · Neue Videos täglich · Keine App nötig
             </p>
-          </motion.div>
+          </FadeIn>
         </div>
       </div>
     </section>

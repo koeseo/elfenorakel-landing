@@ -9,14 +9,14 @@ interface CosmicParticlesProps {
   count?: number;
 }
 
-export const CosmicParticles = ({ count = 2000 }: CosmicParticlesProps) => {
+export const CosmicParticles = ({ count = 800 }: CosmicParticlesProps) => {
   const pointsRef = useRef<THREE.Points>(null);
+  const frameCount = useRef(0);
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
 
     for (let i = 0; i < count; i++) {
-      // Spread particles in a sphere
       const radius = 15 + Math.random() * 25;
       const theta = Math.random() * Math.PI * 2;
       const phi = Math.acos(2 * Math.random() - 1);
@@ -30,6 +30,10 @@ export const CosmicParticles = ({ count = 2000 }: CosmicParticlesProps) => {
   }, [count]);
 
   useFrame((state) => {
+    // Throttle: update every 2nd frame
+    frameCount.current++;
+    if (frameCount.current % 2 !== 0) return;
+
     if (pointsRef.current) {
       pointsRef.current.rotation.y = state.clock.elapsedTime * 0.02;
       pointsRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.01) * 0.1;
@@ -37,7 +41,7 @@ export const CosmicParticles = ({ count = 2000 }: CosmicParticlesProps) => {
   });
 
   return (
-    <Points ref={pointsRef} positions={positions} stride={3} frustumCulled={false}>
+    <Points ref={pointsRef} positions={positions} stride={3}>
       <PointMaterial
         transparent
         color="#C9A35C"
@@ -51,8 +55,9 @@ export const CosmicParticles = ({ count = 2000 }: CosmicParticlesProps) => {
 };
 
 // Secondary teal particles
-export const TealParticles = ({ count = 800 }: CosmicParticlesProps) => {
+export const TealParticles = ({ count = 400 }: CosmicParticlesProps) => {
   const pointsRef = useRef<THREE.Points>(null);
+  const frameCount = useRef(0);
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
@@ -71,6 +76,9 @@ export const TealParticles = ({ count = 800 }: CosmicParticlesProps) => {
   }, [count]);
 
   useFrame((state) => {
+    frameCount.current++;
+    if (frameCount.current % 2 !== 0) return;
+
     if (pointsRef.current) {
       pointsRef.current.rotation.y = -state.clock.elapsedTime * 0.015;
       pointsRef.current.rotation.z = Math.cos(state.clock.elapsedTime * 0.01) * 0.1;
@@ -78,7 +86,7 @@ export const TealParticles = ({ count = 800 }: CosmicParticlesProps) => {
   });
 
   return (
-    <Points ref={pointsRef} positions={positions} stride={3} frustumCulled={false}>
+    <Points ref={pointsRef} positions={positions} stride={3}>
       <PointMaterial
         transparent
         color="#2DD4BF"
