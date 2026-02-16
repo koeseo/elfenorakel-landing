@@ -1,5 +1,25 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 
+// Custom fetch with extended connect timeout for remote Supabase instances.
+// Node 24's undici defaults to 10s which can be too short for remote servers.
+let _customFetch: typeof globalThis.fetch | undefined;
+
+function getCustomFetch(): typeof globalThis.fetch {
+  if (!_customFetch) {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
+      const { Agent } = require('undici');
+      const agent = new Agent({ connect: { timeout: 30_000 } });
+      _customFetch = ((url: RequestInfo | URL, init?: RequestInit) =>
+        fetch(url, { ...init, dispatcher: agent } as RequestInit)) as typeof globalThis.fetch;
+    } catch {
+      // Fallback to global fetch (e.g. in browser or older Node)
+      _customFetch = globalThis.fetch;
+    }
+  }
+  return _customFetch;
+}
+
 // Lazy-initialized Supabase client (avoids build-time errors when env vars are missing)
 let _supabase: SupabaseClient | null = null;
 
@@ -10,7 +30,9 @@ export function getSupabase(): SupabaseClient {
     if (!url || !key) {
       throw new Error('Missing NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY');
     }
-    _supabase = createClient(url, key);
+    _supabase = createClient(url, key, {
+      global: { fetch: getCustomFetch() },
+    });
   }
   return _supabase;
 }
@@ -26,6 +48,7 @@ export const supabase = new Proxy({} as SupabaseClient, {
 export function createServerClient() {
   return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    { global: { fetch: getCustomFetch() } },
   );
 }

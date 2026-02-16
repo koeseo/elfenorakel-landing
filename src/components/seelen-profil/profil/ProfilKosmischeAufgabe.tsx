@@ -1,6 +1,6 @@
 import { FadeIn } from "@/components/ui/FadeIn";
 import type { KosmischeAufgabeContent } from "@/lib/seelen-profil/kosmische-aufgabe";
-import { Compass } from "lucide-react";
+import { Compass, Sparkles } from "lucide-react";
 
 interface ProfilKosmischeAufgabeProps {
   aufgabe: KosmischeAufgabeContent;
@@ -20,39 +20,61 @@ export const ProfilKosmischeAufgabe = ({
         }}
       />
 
-      <div className="max-w-3xl mx-auto text-center">
+      <div className="max-w-3xl mx-auto">
         {/* Icon */}
-        <FadeIn>
-          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--gold)]/10 flex items-center justify-center">
+        <FadeIn className="text-center">
+          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--gold)]/10 flex items-center justify-center glow-pulse">
             <Compass className="w-8 h-8 text-[var(--gold)]" />
           </div>
         </FadeIn>
 
         {/* Heading */}
         <FadeIn delay={0.1}>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient-gold mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gradient-gold mb-4 text-center">
             Deine Kosmische Aufgabe
           </h2>
         </FadeIn>
 
         {/* Title */}
         <FadeIn delay={0.2}>
-          <p className="text-lg md:text-xl text-[var(--teal-light)] font-medium mb-8">
+          <p className="text-lg md:text-xl text-[var(--teal-light)] font-medium mb-8 text-center">
             {aufgabe.titel}
           </p>
         </FadeIn>
 
-        {/* Description */}
+        {/* Description - multi-paragraph */}
         <FadeIn delay={0.3}>
           <div className="glass-card p-8 md:p-10">
-            <p className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed">
-              {aufgabe.beschreibung}
-            </p>
+            {aufgabe.beschreibung.split("\n\n").map((paragraph, i) => (
+              <p
+                key={i}
+                className="text-[var(--text-secondary)] text-base md:text-lg leading-relaxed mb-4 last:mb-0"
+              >
+                {paragraph}
+              </p>
+            ))}
           </div>
         </FadeIn>
 
+        {/* Meditation */}
+        {aufgabe.meditation && (
+          <FadeIn delay={0.4}>
+            <div className="glass-card p-6 md:p-8 mt-6" style={{ borderColor: "rgba(201,163,92,0.2)" }}>
+              <div className="flex items-center gap-2 mb-3">
+                <Sparkles className="w-4 h-4 text-[var(--gold)]" />
+                <h4 className="text-sm uppercase tracking-[0.15em] font-semibold text-[var(--gold-light)]">
+                  Meditation zu deiner Kosmischen Aufgabe
+                </h4>
+              </div>
+              <p className="text-[var(--text-secondary)] leading-relaxed text-sm md:text-base italic">
+                {aufgabe.meditation}
+              </p>
+            </div>
+          </FadeIn>
+        )}
+
         {/* Decorative gold line */}
-        <FadeIn delay={0.4}>
+        <FadeIn delay={0.5}>
           <div className="mt-8 flex items-center justify-center gap-3">
             <div className="w-12 h-px bg-[var(--gold)]/30" />
             <div className="w-2 h-2 rounded-full bg-[var(--gold)]/50" />

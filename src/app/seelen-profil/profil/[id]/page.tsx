@@ -14,6 +14,7 @@ import { getMondphasenContent } from "@/lib/seelen-profil/mondphasen-content";
 import { getJahresEnergie } from "@/lib/seelen-profil/jahres-energie";
 import type { MondphaseType } from "@/lib/seelen-profil/mondphasen";
 
+import { getSchattenLichtDeutung } from "@/lib/seelen-profil/schatten-licht-deutung";
 import { ProfilHero } from "@/components/seelen-profil/profil/ProfilHero";
 import { ProfilArchetyp } from "@/components/seelen-profil/profil/ProfilArchetyp";
 import { ProfilElemente } from "@/components/seelen-profil/profil/ProfilElemente";
@@ -90,6 +91,10 @@ export default async function ProfilPage({ params }: PageProps) {
   const kombinationText =
     dominantElement.kombination[secondaryEl] || null;
 
+  // Get card-specific Schatten/Licht interpretations
+  const schattenDeutung = getSchattenLichtDeutung(profile.schatten_karte);
+  const lichtDeutungData = getSchattenLichtDeutung(profile.licht_karte);
+
   return (
     <div className="min-h-screen">
       {/* 1. Hero Section */}
@@ -123,6 +128,8 @@ export default async function ProfilPage({ params }: PageProps) {
       <ProfilSchattenLicht
         schattenKarte={profile.schatten_karte}
         lichtKarte={profile.licht_karte}
+        schattenDeutung={schattenDeutung.schattenDeutung}
+        lichtDeutung={lichtDeutungData.lichtDeutung}
       />
 
       {/* Divider */}
