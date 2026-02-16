@@ -8,8 +8,9 @@
  * Custom overrides can be stored in OVERRIDES map for when Elfi writes
  * personalised texts for specific combinations.
  *
- * NOTE: Template texts contain SHORT PLACEHOLDERS.
- * Full AI-generated content will be added in Task 5.
+ * The template generates ~200 words of rich, evocative content that
+ * describes the user's unique cosmic task based on their archetype and
+ * dominant element combination.
  */
 
 import { archetypen } from './archetypen';
@@ -25,7 +26,7 @@ export interface KosmischeAufgabeContent {
   key: string;
   /** Display title */
   titel: string;
-  /** ~200 words about the cosmic task (placeholder) */
+  /** ~200 words about the cosmic task */
   beschreibung: string;
 }
 
@@ -33,26 +34,34 @@ export interface KosmischeAufgabeContent {
 // Element Keywords (used in templates)
 // ---------------------------------------------------------------------------
 
-const ELEMENT_KEYWORDS: Record<Element, { kraft: string; weg: string; qualitaet: string }> = {
+const ELEMENT_KEYWORDS: Record<Element, { kraft: string; weg: string; qualität: string; essenz: string; natur: string }> = {
   feuer: {
     kraft: 'Leidenschaft und Tatkraft',
     weg: 'mutig und entschlossen',
-    qualitaet: 'feurige Entschlossenheit',
+    qualität: 'feurige Entschlossenheit',
+    essenz: 'die Flamme, die in deinem Herzen brennt und dich antreibt, deine Visionen in die Tat umzusetzen',
+    natur: 'Wie ein Feuer, das Licht und Wärme spendet, bist du hier, um andere mit deiner Begeisterung zu entfachen',
   },
   wasser: {
     kraft: 'Empathie und Intuition',
-    weg: 'einfuehlsam und fliessend',
-    qualitaet: 'emotionale Tiefe',
+    weg: 'einfühlsam und fließend',
+    qualität: 'emotionale Tiefe',
+    essenz: 'der stille Strom, der durch die Tiefen deiner Seele fließt und verborgene Wahrheiten an die Oberfläche trägt',
+    natur: 'Wie Wasser, das sich seinen Weg durch jeden Fels bahnt, findest du sanfte Wege durch die härtesten Herausforderungen',
   },
   luft: {
     kraft: 'Klarheit und Kommunikation',
     weg: 'geistig und inspirierend',
-    qualitaet: 'visionaere Weite',
+    qualität: 'visionäre Weite',
+    essenz: 'der frische Wind, der alte Gedanken davonträgt und Raum für neue Perspektiven und Erkenntnisse schafft',
+    natur: 'Wie der Wind, der Samen über weite Strecken trägt, verbreitest du Ideen und Inspiration, wohin du auch gehst',
   },
   erde: {
-    kraft: 'Bestaendigkeit und Manifestation',
-    weg: 'geerdet und bestaendig',
-    qualitaet: 'praktische Weisheit',
+    kraft: 'Beständigkeit und Manifestation',
+    weg: 'geerdet und beständig',
+    qualität: 'praktische Weisheit',
+    essenz: 'der fruchtbare Boden, in dem deine tiefsten Visionen Wurzeln schlagen und zu greifbarer Wirklichkeit heranwachsen',
+    natur: 'Wie die Erde, die geduldig nährt und trägt, bist du der feste Grund, auf dem andere sicher stehen können',
   },
 };
 
@@ -97,12 +106,18 @@ function buildFromTemplate(archetypId: number, element: Element): KosmischeAufga
 
   const beschreibung =
     `Als ${archetyp.name} (${archetyp.karteName}) mit dem dominanten Element ${elementInfo.name} ` +
-    `traegst du eine einzigartige kosmische Aufgabe in dir. ` +
-    `Deine Seelenkraft wird durch ${keywords.kraft} angefeuert. ` +
-    `Dein Weg ist ${keywords.weg}, und deine besondere Qualitaet ist ${keywords.qualitaet}. ` +
-    `Die Verbindung von ${archetyp.name} und ${elementInfo.name} gibt dir die Aufgabe, ` +
+    `trägst du eine einzigartige kosmische Aufgabe in dir, die nur du auf diese Weise erfüllen kannst. ` +
+    `Deine Seelenkraft wird durch ${keywords.kraft} angefeuert, ` +
+    `und dein Weg ist ${keywords.weg}. ` +
+    `Deine besondere Qualität ist ${keywords.qualität} -- ` +
+    `${keywords.essenz}. ` +
+    `${keywords.natur}. ` +
+    `Die Verbindung von ${archetyp.name} und ${elementInfo.name} verleiht dir eine seltene Gabe: ` +
     `${archetyp.claim.toLowerCase().replace(/\.$/, '')} -- ` +
-    `und das mit der ganzen Kraft des ${elementInfo.name}-Elements zu tun.`;
+    `und das mit der ganzen Kraft des ${elementInfo.name}-Elements zu tun. ` +
+    `Diese Kombination macht dich zu einer Seele, die in dieser Welt gebraucht wird. ` +
+    `Dein kosmischer Auftrag wartet nicht auf den perfekten Moment -- er entfaltet sich in jedem Augenblick, ` +
+    `in dem du den Mut hast, ganz du selbst zu sein und deine einzigartige Energie in die Welt zu tragen.`;
 
   return { key, titel, beschreibung };
 }
