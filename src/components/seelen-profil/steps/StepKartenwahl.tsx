@@ -20,7 +20,7 @@ export const StepKartenwahl = ({
     <div className="w-full max-w-2xl mx-auto">
       <div className="text-center mb-6 md:mb-8">
         <h2 className="text-2xl md:text-3xl font-bold text-gradient-gold mb-3">
-          Waehle deine 5 Karten
+          Wähle deine 5 Karten
         </h2>
         <p className="text-[var(--text-secondary)] text-sm md:text-base mb-2">
           Lass dich von deiner Intuition leiten. Klicke auf die Karten, die dich anziehen.
@@ -31,7 +31,7 @@ export const StepKartenwahl = ({
               isReady ? "text-[var(--gold)]" : "text-[var(--text-secondary)]"
             }`}
           >
-            {kartenwahl.length} / 5 gewaehlt
+            {kartenwahl.length} / 5 gewählt
           </span>
         </div>
       </div>

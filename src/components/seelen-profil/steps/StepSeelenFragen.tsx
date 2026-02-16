@@ -176,7 +176,7 @@ export const StepSeelenFragen = ({
           `}
         >
           <ArrowLeft className="w-4 h-4" />
-          Zurueck
+          Zurück
         </button>
 
         {/* Show "Weiter" button on last question when all answered */}

@@ -30,7 +30,7 @@ export const StepGeburtsdaten = ({
     <div className="w-full max-w-md mx-auto">
       <div className="text-center mb-8">
         <h2 className="text-2xl md:text-3xl font-bold text-gradient-gold mb-3">
-          Deine kosmische Identitaet
+          Deine kosmische Identität
         </h2>
         <p className="text-[var(--text-secondary)] text-sm md:text-base">
           Die Sterne haben auf dich gewartet. Verrate uns, wann du das Licht der Welt erblickt hast.
@@ -102,7 +102,7 @@ export const StepGeburtsdaten = ({
             `}
           />
           {touched.geburtsdatum && !geburtsdatum && (
-            <p className="text-red-400 text-xs mt-1">Bitte waehle dein Geburtsdatum.</p>
+            <p className="text-red-400 text-xs mt-1">Bitte wähle dein Geburtsdatum.</p>
           )}
         </div>
 

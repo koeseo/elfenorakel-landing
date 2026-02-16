@@ -180,7 +180,7 @@ export const seelenFragen: SeelenFrage[] = [
   },
   {
     id: 'feuer',
-    frage: 'Dein inneres Feuer brennt fuer...',
+    frage: 'Dein inneres Feuer brennt für...',
     typ: 'wort',
     optionen: [
       {

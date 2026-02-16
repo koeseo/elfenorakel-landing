@@ -15,14 +15,14 @@ export async function POST(request: Request) {
 
     if (!Array.isArray(body.kartenwahl) || body.kartenwahl.length !== 5) {
       return Response.json(
-        { error: "Es muessen genau 5 Karten gewaehlt werden." },
+        { error: "Es müssen genau 5 Karten gewählt werden." },
         { status: 400 }
       );
     }
 
     if (!Array.isArray(body.seelenFragen) || body.seelenFragen.length !== 8) {
       return Response.json(
-        { error: "Es muessen genau 8 Seelen-Fragen beantwortet werden." },
+        { error: "Es müssen genau 8 Seelen-Fragen beantwortet werden." },
         { status: 400 }
       );
     }
