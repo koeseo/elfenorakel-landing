@@ -99,13 +99,13 @@ export const MiniReading = () => {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Sparkles className="w-5 h-5 text-[var(--gold)]" />
-            <span className="text-[var(--gold)] text-sm uppercase tracking-widest">
+            <Sparkles className="w-5 h-5 text-[var(--teal)]" />
+            <span className="text-[var(--teal)] text-sm uppercase tracking-widest">
               Kostenlos ausprobieren
             </span>
-            <Sparkles className="w-5 h-5 text-[var(--gold)]" />
+            <Sparkles className="w-5 h-5 text-[var(--teal)]" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gradient-gold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-gradient-teal mb-4">
             Dein Mini-Reading
           </h2>
           <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
@@ -288,7 +288,7 @@ export const MiniReading = () => {
                 <div className="corner-accent corner-accent-tr" style={{ animationDelay: '0.75s' }} />
                 <div className="corner-accent corner-accent-bl" style={{ animationDelay: '1.5s' }} />
                 <div className="corner-accent corner-accent-br" style={{ animationDelay: '2.25s' }} />
-                <h3 className="text-xl md:text-2xl font-bold text-gradient-gold mb-3">
+                <h3 className="text-xl md:text-2xl font-bold text-gradient-teal mb-3">
                   Möchtest du mehr erfahren?
                 </h3>
                 <p className="text-[var(--text-secondary)] mb-6">

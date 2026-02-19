@@ -19,13 +19,13 @@ export const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="glass border-b border-[var(--glass-border)]">
+      <div className="bg-[var(--bg-primary)]/80 backdrop-blur-xl border-b border-[var(--glass-border-teal)] shadow-[0_1px_20px_rgba(45,212,191,0.08)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 group">
-              <Sparkles className="w-6 h-6 text-[var(--gold)] group-hover:text-[var(--gold-light)] transition-colors" />
-              <span className="text-xl font-semibold text-gradient-gold">
+              <Sparkles className="w-6 h-6 text-[var(--teal)] group-hover:text-[var(--teal-light)] transition-colors" />
+              <span className="text-xl font-semibold text-gradient-teal">
                 Elfenorakel
               </span>
             </Link>
@@ -36,7 +36,7 @@ export const Header = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-[var(--text-secondary)] hover:text-[var(--gold)] transition-colors duration-200 text-sm font-medium"
+                  className="text-[var(--text-secondary)] hover:text-[var(--teal)] transition-colors duration-200 text-sm font-medium"
                 >
                   {link.label}
                 </Link>
@@ -46,7 +46,7 @@ export const Header = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden p-2 text-[var(--text-primary)] hover:text-[var(--gold)] transition-colors"
+              className="md:hidden p-2 text-[var(--text-primary)] hover:text-[var(--teal)] transition-colors"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -63,7 +63,7 @@ export const Header = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden glass border-b border-[var(--glass-border)]"
+            className="md:hidden bg-[var(--bg-primary)]/90 backdrop-blur-xl border-b border-[var(--glass-border-teal)]"
           >
             <nav className="flex flex-col py-4 px-4">
               {navLinks.map((link, index) => (
@@ -76,7 +76,7 @@ export const Header = () => {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block py-3 text-[var(--text-secondary)] hover:text-[var(--gold)] transition-colors text-lg"
+                    className="block py-3 text-[var(--text-secondary)] hover:text-[var(--teal)] transition-colors text-lg"
                   >
                     {link.label}
                   </Link>

@@ -75,15 +75,15 @@ export const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div className="flex items-center justify-center gap-2 mb-6">
-            <Sparkles className="w-5 h-5 text-[var(--gold)]" />
-            <span className="text-[var(--gold)] text-sm uppercase tracking-widest">
+            <Sparkles className="w-5 h-5 text-[var(--teal)]" />
+            <span className="text-[var(--teal)] text-sm uppercase tracking-widest">
               Mystische Guidance
             </span>
-            <Sparkles className="w-5 h-5 text-[var(--gold)]" />
+            <Sparkles className="w-5 h-5 text-[var(--teal)]" />
           </div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-            <span className="text-gradient-gold text-glow-teal">Elfenorakel</span>
+            <span className="text-gradient-teal text-glow-teal">Elfenorakel</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-8 max-w-2xl mx-auto">

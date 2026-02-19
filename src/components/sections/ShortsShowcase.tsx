@@ -71,7 +71,7 @@ export const ShortsShowcase = () => {
           <Flame className="w-5 h-5 text-[#F472B6]" />
         </div>
         <h2 className="text-2xl md:text-3xl font-bold text-[var(--text-primary)]">
-          Tägliche <span className="text-gradient-gold">Impulse</span> auf YouTube
+          Tägliche <span className="text-gradient-teal">Impulse</span> auf YouTube
         </h2>
       </FadeIn>
 
