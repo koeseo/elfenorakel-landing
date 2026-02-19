@@ -285,15 +285,9 @@ export default function BlogPostPage() {
             oder nutze die Elfenorakel App für tägliche Impulse.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button
-              size="lg"
-              onClick={() => window.open("https://app.elfenorakel.de", "_blank")}
-            >
-              <Sparkles className="w-5 h-5" />
-              Zur App
-            </Button>
             <Link href="/readings">
-              <Button variant="outline" size="lg">
+              <Button size="lg">
+                <Sparkles className="w-5 h-5" />
                 Readings entdecken
               </Button>
             </Link>

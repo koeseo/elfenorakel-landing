@@ -215,15 +215,9 @@ export default function TarotGalleryPage() {
                   </div>
                   <div className="pt-4 border-t border-[var(--glass-border)]">
                     <p className="text-[var(--text-secondary)] text-sm">
-                      Für tiefere Einblicke und persönliche Interpretationen,
-                      nutze die Elfenorakel App für ein vollständiges Reading.
+                      Entdecke die tiefere Bedeutung dieser Karte in einem
+                      persönlichen Reading mit Elfi.
                     </p>
-                    <button
-                      onClick={() => window.open("https://app.elfenorakel.de", "_blank")}
-                      className="mt-4 px-4 py-2 bg-[var(--gold)] text-[var(--bg-primary)] rounded-full text-sm font-medium hover:bg-[var(--gold-light)] transition-colors"
-                    >
-                      Jetzt Reading starten
-                    </button>
                   </div>
                 </div>
               </div>

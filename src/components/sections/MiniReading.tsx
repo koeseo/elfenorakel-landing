@@ -285,15 +285,15 @@ export const MiniReading = () => {
                   Möchtest du mehr erfahren?
                 </h3>
                 <p className="text-[var(--text-secondary)] mb-6">
-                  In der Elfenorakel App erhältst du detaillierte AI-Interpretationen,
-                  persönliche Readings und tiefere Einblicke in die Botschaften der Karten.
+                  Entdecke dein persönliches Seelen-Profil mit tiefgehenden Einsichten
+                  zu deinen Karten, Archetypen und kosmischen Energien.
                 </p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                   <Button
                     size="lg"
-                    onClick={() => window.open("https://app.elfenorakel.de", "_blank")}
+                    onClick={() => window.location.href = "/seelen-profil"}
                   >
-                    Vollständiges Reading
+                    Dein Seelen-Profil entdecken
                     <ArrowRight className="w-5 h-5" />
                   </Button>
                   <Button

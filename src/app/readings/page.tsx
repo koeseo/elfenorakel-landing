@@ -94,9 +94,9 @@ const faqs = [
 ];
 
 export default function ReadingsPage() {
-  const handleBooking = (packageId: string) => {
-    // For now, redirect to the app or a booking form
-    window.open(`https://app.elfenorakel.de/readings/${packageId}`, "_blank");
+  const handleBooking = (_packageId: string) => {
+    // Readings coming soon - scroll to contact or show info
+    alert("Readings sind bald verfügbar! Kontaktiere Elfi direkt für persönliche Readings.");
   };
 
   return (
