@@ -331,24 +331,94 @@ body {
    COSMIC BACKGROUND - CSS Animations (GPU composited)
    ═══════════════════════════════════════════════════════════════ */
 
-.cosmic-nebula-1 {
-  animation: nebula-drift-1 20s ease-in-out infinite;
-}
+/* ---------------------------------------------------------------------------
+   Cosmic Background — Nebula, Aurora, Stars, Fireflies, Shooting Stars
+   All CSS-only, GPU-composited (transform/opacity only)
+   --------------------------------------------------------------------------- */
 
+/* Nebula Orbs — slow drifting */
+.cosmic-nebula-1 {
+  animation: nebula-drift-1 22s ease-in-out infinite;
+}
 .cosmic-nebula-2 {
-  animation: nebula-drift-2 25s ease-in-out infinite 3s;
+  animation: nebula-drift-2 28s ease-in-out infinite 2s;
+}
+.cosmic-nebula-3 {
+  animation: nebula-drift-3 24s ease-in-out infinite 5s;
+}
+.cosmic-nebula-4 {
+  animation: nebula-drift-4 30s ease-in-out infinite 8s;
 }
 
 @keyframes nebula-drift-1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(50px, -30px) scale(1.08); }
+  33% { transform: translate(60px, -25px) scale(1.1); }
+  66% { transform: translate(20px, 15px) scale(1.05); }
 }
-
 @keyframes nebula-drift-2 {
   0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-40px, 40px) scale(1.12); }
+  33% { transform: translate(-45px, 35px) scale(1.12); }
+  66% { transform: translate(-15px, -20px) scale(0.95); }
+}
+@keyframes nebula-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-30px, -40px) scale(1.08); }
+  66% { transform: translate(40px, 10px) scale(1.03); }
+}
+@keyframes nebula-drift-4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(25px, 30px) scale(1.15); }
 }
 
+/* Aurora — flowing horizontal light bands */
+.cosmic-aurora-1 {
+  animation: aurora-flow-1 18s ease-in-out infinite;
+}
+.cosmic-aurora-2 {
+  animation: aurora-flow-2 22s ease-in-out infinite 4s;
+}
+
+@keyframes aurora-flow-1 {
+  0%, 100% { transform: translateX(0) scaleY(1); opacity: 1; }
+  25% { transform: translateX(30px) scaleY(1.3); opacity: 0.8; }
+  50% { transform: translateX(-20px) scaleY(0.8); opacity: 1.2; }
+  75% { transform: translateX(15px) scaleY(1.1); opacity: 0.9; }
+}
+@keyframes aurora-flow-2 {
+  0%, 100% { transform: translateX(0) scaleY(1); opacity: 1; }
+  50% { transform: translateX(-40px) scaleY(1.4); opacity: 0.7; }
+}
+
+/* Shooting Stars — fast diagonal streak */
+.cosmic-shooting-star {
+  opacity: 0;
+  animation: shooting-star-fly var(--shoot-duration, 2s) ease-in infinite;
+}
+
+@keyframes shooting-star-fly {
+  0% {
+    opacity: 0;
+    transform: rotate(inherit) translateX(0) scaleX(0.3);
+  }
+  5% {
+    opacity: 1;
+    transform: rotate(inherit) translateX(0) scaleX(1);
+  }
+  30% {
+    opacity: 0.8;
+    transform: rotate(inherit) translateX(200px) scaleX(1);
+  }
+  50% {
+    opacity: 0;
+    transform: rotate(inherit) translateX(400px) scaleX(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(inherit) translateX(400px) scaleX(0);
+  }
+}
+
+/* Fireflies — glowing orbs floating upward */
 .cosmic-firefly {
   animation: firefly-float var(--duration, 15s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
@@ -356,23 +426,28 @@ body {
 
 @keyframes firefly-float {
   0%, 100% {
-    transform: translate(0, 0) scale(0.5);
+    transform: translate(0, 0) scale(0.4);
     opacity: 0;
   }
-  20% {
-    transform: translate(calc(var(--move-x) * 0.5), calc(var(--move-y) * 0.3)) scale(1.1);
-    opacity: 0.9;
+  15% {
+    transform: translate(calc(var(--move-x) * 0.3), calc(var(--move-y) * 0.2)) scale(1);
+    opacity: 0.8;
   }
-  50% {
-    transform: translate(var(--move-x), calc(var(--move-y) * 0.6)) scale(1);
+  40% {
+    transform: translate(calc(var(--move-x) * 0.7), calc(var(--move-y) * 0.5)) scale(1.15);
     opacity: 1;
   }
-  80% {
-    transform: translate(calc(var(--move-x) * 0.8), calc(var(--move-y) * 0.9)) scale(0.9);
-    opacity: 0.7;
+  65% {
+    transform: translate(var(--move-x), calc(var(--move-y) * 0.75)) scale(0.95);
+    opacity: 0.85;
+  }
+  85% {
+    transform: translate(calc(var(--move-x) * 0.9), calc(var(--move-y) * 0.95)) scale(0.7);
+    opacity: 0.4;
   }
 }
 
+/* Floating Particles — gentle drifting motes */
 .cosmic-particle {
   animation: particle-drift var(--duration, 8s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
@@ -380,15 +455,24 @@ body {
 
 @keyframes particle-drift {
   0%, 100% {
-    transform: translate(0, 0) scale(0.7);
-    opacity: 0.2;
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0.15;
   }
-  50% {
-    transform: translate(var(--drift-x, 25px), var(--drift-y, -40px)) scale(1.3);
+  30% {
+    transform: translate(calc(var(--drift-x) * 0.4), calc(var(--drift-y) * 0.3)) scale(1);
+    opacity: 0.7;
+  }
+  60% {
+    transform: translate(var(--drift-x), var(--drift-y)) scale(1.2);
     opacity: 0.9;
+  }
+  85% {
+    transform: translate(calc(var(--drift-x) * 0.7), calc(var(--drift-y) * 1.1)) scale(0.8);
+    opacity: 0.3;
   }
 }
 
+/* Twinkling Stars — soft pulsing */
 .cosmic-star {
   animation: star-twinkle var(--duration, 3s) ease-in-out infinite;
   animation-delay: var(--delay, 0s);
@@ -396,12 +480,31 @@ body {
 
 @keyframes star-twinkle {
   0%, 100% {
-    opacity: 0.2;
+    opacity: 0.15;
     transform: scale(0.8);
   }
   50% {
     opacity: var(--star-brightness, 0.8);
     transform: scale(1.2);
+  }
+}
+
+/* Bright Stars — stronger pulse with glow */
+.cosmic-star-bright {
+  animation: star-bright-pulse var(--duration, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes star-bright-pulse {
+  0%, 100% {
+    opacity: 0.25;
+    transform: scale(0.7);
+    filter: brightness(1);
+  }
+  50% {
+    opacity: var(--star-brightness, 1);
+    transform: scale(1.5);
+    filter: brightness(1.4);
   }
 }
 
@@ -637,6 +740,110 @@ body {
   50% { transform: scale(1.1); opacity: 0.6; }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   HOMEPAGE REDESIGN — Magical Effects
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Card-Shimmer — golden sweep over card backs */
+@keyframes card-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Text-Glow-Breathing — atmendes Teal-Leuchten auf Überschriften */
+@keyframes text-glow-breath {
+  0%, 100% { text-shadow: 0 0 10px rgba(45, 212, 191, 0.3); }
+  50% { text-shadow: 0 0 25px rgba(45, 212, 191, 0.6), 0 0 50px rgba(201, 163, 92, 0.2); }
+}
+
+/* Corner-Accent-Pulse — pulsierende Ecken */
+@keyframes corner-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+/* Rune-Float — schwebende mystische Symbole */
+@keyframes rune-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.4; }
+  50% { transform: translateY(-20px) rotate(5deg); opacity: 0.7; }
+}
+
+/* Oracle-Glow-Pulse — mehrstufiger Glow auf gezogenen Karten */
+@keyframes oracle-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(45, 212, 191, 0.3), 0 0 60px rgba(201, 163, 92, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(45, 212, 191, 0.5), 0 0 80px rgba(201, 163, 92, 0.3), 0 0 100px rgba(45, 212, 191, 0.15); }
+}
+
+/* Floating Runes */
+.floating-rune {
+  position: absolute;
+  pointer-events: none;
+  animation: rune-float 8s ease-in-out infinite;
+  font-size: 1.5rem;
+  color: var(--teal);
+  opacity: 0.4;
+}
+
+/* Corner Accents — L-förmige Ecken */
+.corner-accent {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  animation: corner-pulse 3s ease-in-out infinite;
+}
+.corner-accent-tl { top: 0; left: 0; border-top: 2px solid var(--teal); border-left: 2px solid var(--teal); }
+.corner-accent-tr { top: 0; right: 0; border-top: 2px solid var(--teal); border-right: 2px solid var(--teal); }
+.corner-accent-bl { bottom: 0; left: 0; border-bottom: 2px solid var(--teal); border-left: 2px solid var(--teal); }
+.corner-accent-br { bottom: 0; right: 0; border-bottom: 2px solid var(--teal); border-right: 2px solid var(--teal); }
+
+/* Text Glow */
+.text-glow-teal {
+  animation: text-glow-breath 4s ease-in-out infinite;
+}
+
+/* Oracle Card Glow */
+.oracle-card-glow {
+  animation: oracle-glow 3s ease-in-out infinite;
+}
+
+/* Card Shimmer Overlay — auf Kartenrückseiten */
+.card-shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+.card-shimmer-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(201, 163, 92, 0.12) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: card-shimmer 3s linear infinite;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Teal CTA Button */
+.btn-cta-teal {
+  background: linear-gradient(135deg, var(--teal-deep), var(--teal));
+  color: white;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn-cta-teal:hover {
+  box-shadow: 0 0 20px rgba(45, 212, 191, 0.4), 0 0 40px rgba(45, 212, 191, 0.2);
+  border-color: var(--teal);
+}
+
+/* Teal-dominant text gradient for homepage */
+.text-gradient-teal {
+  background: linear-gradient(135deg, var(--teal-light), var(--gold), var(--teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* Vignette overlay */
 .vignette {
   position: absolute;
@@ -778,4 +985,70 @@ body {
 
 .quiz-fade-in {
   animation: quiz-fade-in 0.6s ease-out forwards;
+}
+
+/* ---------------------------------------------------------------------------
+   Print styles — clean PDF output for Seelen-Profil
+   --------------------------------------------------------------------------- */
+@media print {
+  /* Hide navigation, footer chrome, and interactive elements */
+  header, footer, nav,
+  .section-divider,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  /* Force dark background for print (browsers strip bg by default) */
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background: #0A0A0C !important;
+    color: #E8E8E8 !important;
+  }
+
+  /* Glass cards: solid dark background for print */
+  .glass-card {
+    background: #121218 !important;
+    border: 1px solid rgba(201, 163, 92, 0.2) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    break-inside: avoid;
+  }
+
+  /* Ensure all text is visible */
+  * {
+    color: inherit !important;
+    text-shadow: none !important;
+  }
+
+  /* Gold gradient text fallback for print */
+  .text-gradient-gold {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #C9A35C !important;
+    color: #C9A35C !important;
+  }
+
+  /* Page break control */
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Remove animations */
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Ensure images print */
+  img {
+    max-width: 100% !important;
+    break-inside: avoid;
+  }
+
+  /* Hide the footer section entirely (share/download buttons) */
+  section:last-child {
+    display: none !important;
+  }
 }

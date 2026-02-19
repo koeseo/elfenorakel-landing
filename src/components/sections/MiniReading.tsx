@@ -86,6 +86,9 @@ export const MiniReading = () => {
 
   return (
     <section id="mini-reading" className="py-24 relative overflow-hidden">
+      {/* Subtle background circles */}
+      <div className="mystical-circle mystical-circle-outer absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-30" />
+      <div className="mystical-circle mystical-circle-middle absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] opacity-20" />
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
@@ -218,14 +221,14 @@ export const MiniReading = () => {
                       whileTap={{ scale: 0.95 }}
                     >
                       {/* Card Back */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-[var(--gold-dim)] via-[var(--bg-card)] to-[var(--gold-dim)] rounded-lg border border-[var(--gold)]/30">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[var(--gold-dim)] via-[var(--bg-card)] to-[var(--gold-dim)] rounded-lg border border-[var(--gold)]/30 card-shimmer-effect">
                         <div className="absolute inset-2 border border-[var(--gold)]/20 rounded flex items-center justify-center">
                           <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-[var(--gold)]/50 group-hover:text-[var(--gold)] transition-colors" />
                         </div>
                       </div>
 
                       {/* Hover Glow */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[var(--gold)]/10 rounded-lg" />
+                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-t from-[var(--teal)]/20 to-[var(--gold)]/10 rounded-lg" />
                     </motion.button>
                   ))}
               </motion.div>
@@ -256,7 +259,7 @@ export const MiniReading = () => {
                     <span className="text-xs md:text-sm text-[var(--teal)] uppercase tracking-wider font-medium">
                       {positions[index]}
                     </span>
-                    <div className="relative w-24 h-36 md:w-32 md:h-48 rounded-lg overflow-hidden shadow-lg glow-gold">
+                    <div className="relative w-24 h-36 md:w-32 md:h-48 rounded-lg overflow-hidden shadow-lg oracle-card-glow">
                       <Image
                         src={drawn.card.image}
                         alt={drawn.card.name}
@@ -279,8 +282,12 @@ export const MiniReading = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
-                className="glass-card p-6 md:p-8 max-w-2xl mx-auto"
+                className="glass-card p-6 md:p-8 max-w-2xl mx-auto relative"
               >
+                <div className="corner-accent corner-accent-tl" />
+                <div className="corner-accent corner-accent-tr" style={{ animationDelay: '0.75s' }} />
+                <div className="corner-accent corner-accent-bl" style={{ animationDelay: '1.5s' }} />
+                <div className="corner-accent corner-accent-br" style={{ animationDelay: '2.25s' }} />
                 <h3 className="text-xl md:text-2xl font-bold text-gradient-gold mb-3">
                   Möchtest du mehr erfahren?
                 </h3>
