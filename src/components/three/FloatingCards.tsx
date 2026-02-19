@@ -1,9 +1,12 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useMemo } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
+
+// Shared geometry — created once, reused by all cards
+const sharedGeometry = new THREE.PlaneGeometry(1.4, 2.4);
 
 interface CardProps {
   position: [number, number, number];
@@ -16,8 +19,13 @@ const Card = ({ position, rotation, image, delay = 0 }: CardProps) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const texture = useTexture(image);
   const { pointer } = useThree();
+  const frameCount = useRef(0);
 
   useFrame((state) => {
+    // Throttle: update every 2nd frame
+    frameCount.current++;
+    if (frameCount.current % 2 !== 0) return;
+
     if (!meshRef.current) return;
 
     const time = state.clock.elapsedTime + delay;
@@ -35,8 +43,7 @@ const Card = ({ position, rotation, image, delay = 0 }: CardProps) => {
   });
 
   return (
-    <mesh ref={meshRef} position={position} rotation={rotation}>
-      <planeGeometry args={[1.4, 2.4]} />
+    <mesh ref={meshRef} position={position} rotation={rotation} geometry={sharedGeometry}>
       <meshStandardMaterial
         map={texture}
         side={THREE.DoubleSide}
@@ -48,7 +55,7 @@ const Card = ({ position, rotation, image, delay = 0 }: CardProps) => {
 };
 
 export const FloatingCards = () => {
-  const cards = [
+  const cards = useMemo(() => [
     {
       position: [-2.5, 0.3, 0] as [number, number, number],
       rotation: [0, 0.3, 0] as [number, number, number],
@@ -67,7 +74,7 @@ export const FloatingCards = () => {
       image: "/cards/tarot/major-17-stern.webp",
       delay: 2,
     },
-  ];
+  ], []);
 
   return (
     <group>

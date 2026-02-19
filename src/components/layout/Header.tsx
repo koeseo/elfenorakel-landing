@@ -7,6 +7,7 @@ import { Menu, X, Sparkles } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/seelen-profil", label: "Seelen-Profil" },
   { href: "/readings", label: "Readings" },
   { href: "/ueber-elfi", label: "Über Elfi" },
   { href: "/blog", label: "Blog" },

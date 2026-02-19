@@ -1,8 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Sparkles, Youtube, Music2, Play, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui";
+import { Button, FadeIn } from "@/components/ui";
 
 const readingTypes = [
   {
@@ -54,13 +53,7 @@ export const ReadingsShowcase = () => {
     <section id="readings-showcase" className="py-24 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <FadeIn className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Sparkles className="w-5 h-5 text-[var(--gold)]" />
             <span className="text-[var(--gold)] text-sm uppercase tracking-widest">
@@ -75,17 +68,14 @@ export const ReadingsShowcase = () => {
             Ehrliche Botschaften, tiefe Einblicke und spirituelle Guidance –
             persönlich von Elfi auf YouTube und TikTok.
           </p>
-        </motion.div>
+        </FadeIn>
 
         {/* Reading Types */}
         <div className="grid md:grid-cols-3 gap-6 mb-16">
           {readingTypes.map((type, index) => (
-            <motion.div
+            <FadeIn
               key={type.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              delay={index * 0.1}
               className="glass-card p-8 text-center group hover:border-[var(--gold)] transition-colors"
             >
               <div
@@ -100,23 +90,21 @@ export const ReadingsShowcase = () => {
               <p className="text-[var(--text-secondary)] text-sm">
                 {type.description}
               </p>
-            </motion.div>
+            </FadeIn>
           ))}
         </div>
 
         {/* Platforms */}
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {platforms.map((platform, index) => (
-            <motion.a
+            <FadeIn
               key={platform.name}
+              direction={index === 0 ? "left" : "right"}
+              as="a"
               href={platform.url}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
-              className="glass-card p-8 flex items-start gap-6 hover:border-[var(--gold)] transition-colors group cursor-pointer"
+              className="glass-card p-8 flex items-start gap-6 hover:border-[var(--gold)] hover:scale-[1.02] transition-all group cursor-pointer"
             >
               <div
                 className="w-16 h-16 rounded-2xl flex items-center justify-center shrink-0"
@@ -147,17 +135,12 @@ export const ReadingsShowcase = () => {
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
-            </motion.a>
+            </FadeIn>
           ))}
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center"
-        >
+        <FadeIn className="text-center">
           <div className="glass-card p-8 md:p-10 max-w-3xl mx-auto">
             <h3 className="text-2xl md:text-3xl font-bold text-gradient-gold mb-4">
               Dein persönliches Reading
@@ -184,7 +167,7 @@ export const ReadingsShowcase = () => {
               </Button>
             </div>
           </div>
-        </motion.div>
+        </FadeIn>
       </div>
     </section>
   );

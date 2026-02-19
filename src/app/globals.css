@@ -327,6 +327,98 @@ body {
    ANIMATIONS
    ═══════════════════════════════════════════════════════════════ */
 
+/* ═══════════════════════════════════════════════════════════════
+   COSMIC BACKGROUND - CSS Animations (GPU composited)
+   ═══════════════════════════════════════════════════════════════ */
+
+.cosmic-nebula-1 {
+  animation: nebula-drift-1 20s ease-in-out infinite;
+}
+
+.cosmic-nebula-2 {
+  animation: nebula-drift-2 25s ease-in-out infinite 3s;
+}
+
+@keyframes nebula-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, -30px) scale(1.08); }
+}
+
+@keyframes nebula-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-40px, 40px) scale(1.12); }
+}
+
+.cosmic-firefly {
+  animation: firefly-float var(--duration, 15s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes firefly-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    transform: translate(calc(var(--move-x) * 0.5), calc(var(--move-y) * 0.3)) scale(1.1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(var(--move-x), calc(var(--move-y) * 0.6)) scale(1);
+    opacity: 1;
+  }
+  80% {
+    transform: translate(calc(var(--move-x) * 0.8), calc(var(--move-y) * 0.9)) scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+.cosmic-particle {
+  animation: particle-drift var(--duration, 8s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes particle-drift {
+  0%, 100% {
+    transform: translate(0, 0) scale(0.7);
+    opacity: 0.2;
+  }
+  50% {
+    transform: translate(var(--drift-x, 25px), var(--drift-y, -40px)) scale(1.3);
+    opacity: 0.9;
+  }
+}
+
+.cosmic-star {
+  animation: star-twinkle var(--duration, 3s) ease-in-out infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes star-twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: var(--star-brightness, 0.8);
+    transform: scale(1.2);
+  }
+}
+
+/* Shorts auto-scroll (compositor thread) */
+@keyframes shorts-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.shorts-scroll-track {
+  animation: shorts-scroll var(--scroll-duration, 40s) linear infinite;
+}
+
+.shorts-scroll-track:hover {
+  animation-play-state: paused;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -588,4 +680,102 @@ body {
 ::selection {
   background: var(--gold);
   color: var(--bg-primary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SEELEN-PROFIL QUIZ ANIMATIONS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Step enter transition */
+@keyframes quiz-step-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quiz-step-enter {
+  animation: quiz-step-enter 0.5s ease-out forwards;
+}
+
+/* Slide animations for soul questions */
+@keyframes quiz-slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes quiz-slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.quiz-slide-in-right {
+  animation: quiz-slide-in-right 0.4s ease-out forwards;
+}
+
+.quiz-slide-in-left {
+  animation: quiz-slide-in-left 0.4s ease-out forwards;
+}
+
+/* Calculation screen animations */
+@keyframes quiz-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes quiz-pulse-ring {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes quiz-pulse-glow-center {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes quiz-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quiz-fade-in {
+  animation: quiz-fade-in 0.6s ease-out forwards;
 }

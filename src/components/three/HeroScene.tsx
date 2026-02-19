@@ -1,8 +1,8 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { PerspectiveCamera } from "@react-three/drei";
 import { CosmicParticles, TealParticles } from "./CosmicParticles";
 import { FloatingCards } from "./FloatingCards";
 
@@ -10,12 +10,6 @@ const Scene = () => {
   return (
     <>
       <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
-      <OrbitControls
-        enableZoom={false}
-        enablePan={false}
-        enableRotate={false}
-        autoRotate={false}
-      />
 
       {/* Lighting */}
       <ambientLight intensity={0.4} />
@@ -29,9 +23,9 @@ const Scene = () => {
         color="#FFD700"
       />
 
-      {/* Particles */}
-      <CosmicParticles count={1500} />
-      <TealParticles count={800} />
+      {/* Particles — reduced counts */}
+      <CosmicParticles count={800} />
+      <TealParticles count={400} />
 
       {/* Cards */}
       <Suspense fallback={null}>
@@ -42,8 +36,25 @@ const Scene = () => {
 };
 
 export const HeroScene = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  // Pause Canvas when hero scrolls out of view
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="absolute inset-0 z-0">
+    <div ref={containerRef} className="absolute inset-0 z-0">
       <Canvas
         gl={{
           antialias: true,
@@ -51,6 +62,7 @@ export const HeroScene = () => {
           powerPreference: "high-performance",
         }}
         dpr={[1, 2]}
+        frameloop={isVisible ? "always" : "demand"}
         style={{ background: "transparent" }}
       >
         <Scene />
