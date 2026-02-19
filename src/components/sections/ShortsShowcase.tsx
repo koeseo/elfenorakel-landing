@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Play, Flame, Sparkles } from "lucide-react";
+import { Play, Flame, Sparkles, Youtube, Music2 } from "lucide-react";
 import { FadeIn } from "@/components/ui";
 
 const shorts = [
@@ -154,6 +154,43 @@ export const ShortsShowcase = () => {
           Alle Shorts ansehen
           <span className="text-xs">→</span>
         </a>
+      </FadeIn>
+
+      {/* Social Stats — YouTube + TikTok */}
+      <FadeIn className="mt-12 max-w-3xl mx-auto px-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
+          {/* YouTube */}
+          <a
+            href="https://youtube.com/@elfenorakel"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 group"
+          >
+            <div className="w-10 h-10 rounded-full bg-red-600/10 border border-red-600/20 flex items-center justify-center group-hover:border-red-600/50 transition-colors">
+              <Youtube className="w-5 h-5 text-red-500" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-[var(--text-primary)]">YouTube</p>
+              <p className="text-xs text-[var(--text-muted)]">Tägliche Readings</p>
+            </div>
+          </a>
+
+          {/* TikTok */}
+          <a
+            href="https://tiktok.com/@elfenorakel"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 group"
+          >
+            <div className="w-10 h-10 rounded-full bg-[#F472B6]/10 border border-[#F472B6]/20 flex items-center justify-center group-hover:border-[#F472B6]/50 transition-colors">
+              <Music2 className="w-5 h-5 text-[#F472B6]" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-[var(--text-primary)]">TikTok</p>
+              <p className="text-xs text-[var(--text-muted)]">60-Sekunden Impulse</p>
+            </div>
+          </a>
+        </div>
       </FadeIn>
     </section>
   );
