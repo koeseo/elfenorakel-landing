@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cinzel, Inter } from "next/font/google";
 import { Header, Footer } from "@/components/layout";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -49,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="de" data-theme="dark">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${cinzel.variable} ${inter.variable} antialiased min-h-screen flex flex-col`}
       >
         <Header />
         <main className="flex-1 pt-16 md:pt-20">{children}</main>
